@@ -1,0 +1,38 @@
+def future_gain(annual_site_profit, current_conversion_rate, improved_conversion_rate, expected_project_life, improvement_cost, increase_conversion_rate):
+    future_gain = ((annual_site_profit * (improved_conversion_rate / current_conversion_rate)) - annual_site_profit) * (((1 + increase_conversion_rate/100) ** expected_project_life) - 1) / (increase_conversion_rate/100) - improvement_cost * ((1 + increase_conversion_rate/100) ** expected_project_life)
+    return future_gain
+
+def total_gain(future_gain, increase_conversion_rate, expected_project_life):
+    total_gain = future_gain / ((1 + increase_conversion_rate/100) ** expected_project_life)
+    return total_gain
+
+def annual_gain(total_gain, expected_project_life):
+    annual_gain = total_gain / expected_project_life
+    return annual_gain
+
+def annual_roi(annual_gain, improvement_cost):
+    annual_roi = annual_gain / improvement_cost
+    return annual_roi
+
+def total_roi(total_gain, improvement_cost):
+    total_roi = total_gain / improvement_cost
+    return total_roi
+
+annual_site_profit = float(input("Enter Annual Site Profit: "))
+improvement_cost = float(input("Enter Improvement Cost: "))
+current_conversion_rate = float(input("Enter Current Conversion Rate (as a percentage): "))
+expected_project_life = int(input("Enter Expected Project Life (in years): "))
+improved_conversion_rate = float(input("Enter Improved Conversion Rate (as a percentage): "))
+increase_conversion_rate = float(input("Enter Increase in Conversion Rate (as a percentage): "))
+
+future_gain_value = future_gain(annual_site_profit, current_conversion_rate, improved_conversion_rate, expected_project_life, improvement_cost, increase_conversion_rate)
+total_gain_value = total_gain(future_gain_value, increase_conversion_rate, expected_project_life)
+annual_gain_value = annual_gain(total_gain_value, expected_project_life)
+annual_roi_value = annual_roi(annual_gain_value, improvement_cost)
+total_roi_value = total_roi(total_gain_value, improvement_cost)
+
+print("Future Gain from Improvement:", future_gain_value)
+print("Total Gain from Improvement:", total_gain_value)
+print("Annual Gain from Improvement:", annual_gain_value)
+print("Annual ROI:", annual_roi_value)
+print("Total ROI:", total_roi_value)
