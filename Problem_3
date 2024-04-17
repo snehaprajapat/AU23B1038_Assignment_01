@@ -1,0 +1,22 @@
+def process_orders(n):
+    order_stack = []
+
+    for i in range(n):
+        order = input(f"Please enter your order {i+1}: ")
+        order_stack.append(order)
+
+    print("The following orders are being prepared:")
+    dispatched_orders = []
+    while order_stack:
+        order = order_stack.pop()
+        dispatched_orders.append(order)
+
+    for order in reversed(dispatched_orders):
+        print("Preparing Your order -", order)
+
+    print("\nThe following orders have been dispatched:")
+    for order in reversed(dispatched_orders):
+        print(order)
+
+n = int(input("Enter the number of food items you want to order: "))
+process_orders(n)
